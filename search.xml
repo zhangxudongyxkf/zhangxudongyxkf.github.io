@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Docker 备忘</title>
+    <url>/2020/08/16/Docker%20%E5%A4%87%E5%BF%98/</url>
+    <content><![CDATA[<h4 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build -t &lt;Name&gt; .</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h4><ul>
+<li><p>docker run 方式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --<span class="built_in">rm</span> -it &lt;Name&gt; /bin/bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>docker-compose 方式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose up -d &lt;Name&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<span id="more"></span>
+
+<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><ul>
+<li><p>查看所有镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有容器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br><span class="line">docker-compose ps</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li><p>重新创建并启动容器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose up -d --force-recreate &lt;Name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拉取所有容器最新镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose pull &lt;Name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清理所有停止运行的容器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker container prune</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清理所有悬挂镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清理所有无用数据卷</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker volume prune</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git 备忘</title>
+    <url>/2020/08/16/Git%20%E5%A4%87%E5%BF%98/</url>
+    <content><![CDATA[<p>基本的 Git 工作流程如下：</p>
+<ul>
+<li>在工作区中修改文件。</li>
+<li>将你想要下次提交的更改选择性地暂存，这样只会将更改的部分添加到暂存区。</li>
+<li>提交更新，找到暂存区的文件，将快照永久性存储到 Git 目录。</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+<h3 id="初次运行前配置"><a href="#初次运行前配置" class="headerlink" title="初次运行前配置"></a>初次运行前配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;Xudong Zhang&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;zhangxudongyxkf@163.com&quot;</span></span><br><span class="line">git config --global core.editor vim</span><br></pre></td></tr></table></figure>
+
+<h3 id="检查配置信息"><a href="#检查配置信息" class="headerlink" title="检查配置信息"></a>检查配置信息</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="常用流程"><a href="#常用流程" class="headerlink" title="常用流程"></a>常用流程</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status -s</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;commit log&quot;</span></span><br><span class="line">git pull</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<h3 id="同步（远程到本地）"><a href="#同步（远程到本地）" class="headerlink" title="同步（远程到本地）"></a>同步（远程到本地）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull origin develop</span><br></pre></td></tr></table></figure>
+
+<h3 id="推送（本地到远程）"><a href="#推送（本地到远程）" class="headerlink" title="推送（本地到远程）"></a>推送（本地到远程）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin develop</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>origin 是默认远程主机名，可以通过 git remote 查看</li>
+<li>develop 是本地分支名，可以通过 git branch 查看</li>
+</ul>
+<h3 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h3><ul>
+<li>撤销所有修改</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>撤销单个文件修改</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git restore &lt;文件名&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="子模块"><a href="#子模块" class="headerlink" title="子模块"></a>子模块</h2><h3 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git submodule add https://github.com/chaconinc/DbConnector</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git submodule update --remote</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><ul>
+<li><p>清空模块目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git submodule deinit &lt;name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除.gitmodules 中记录的模块信息</p>
+</li>
+<li><p>清除.git&#x2F;modules 中的缓存</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached &lt;name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -am <span class="string">&quot;Remove a submodule.&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><h3 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3><p>切换到 dev&#x2F;master 分支，并新建自己的分支(这里是 soul）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout develop</span><br><span class="line">git checkout -b soul</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 先切换到 master或者其他分支然后再删除分支</span></span><br><span class="line">$ git checkout develop</span><br><span class="line">$ git branch -D soul</span><br><span class="line"><span class="comment"># 删除远程分支</span></span><br><span class="line">$ git push origin --delete soul</span><br></pre></td></tr></table></figure>
+
+<h3 id="分支关系"><a href="#分支关系" class="headerlink" title="分支关系"></a>分支关系</h3><p>创建分支成功以后，查看本地分支与远程分支的关系</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -vv</span><br></pre></td></tr></table></figure>
+
+<h3 id="推送分支"><a href="#推送分支" class="headerlink" title="推送分支"></a>推送分支</h3><p>将本地新建分支 push 到自己的本地远程 origin 上，因为只在本地创建了一个新的分支，远程 origin 上还没有该分支</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin soul:soul</span><br></pre></td></tr></table></figure>
+
+<h3 id="关联分支"><a href="#关联分支" class="headerlink" title="关联分支"></a>关联分支</h3><p>把本地分支与远程 origin 的分支进行关联处理(通过 –set-upstream-to 命令)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/soul soul</span><br></pre></td></tr></table></figure>
+
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout develop</span><br><span class="line">git merge soul</span><br></pre></td></tr></table></figure>
+
+<h2 id="Gitee、Github"><a href="#Gitee、Github" class="headerlink" title="Gitee、Github"></a>Gitee、Github</h2><h3 id="Github-Gitee"><a href="#Github-Gitee" class="headerlink" title="Github-&gt;Gitee"></a>Github-&gt;Gitee</h3><p><a href="https://blog.gitee.com/2018/06/05/github_to_gitee/">https://blog.gitee.com/2018/06/05/github_to_gitee&#x2F;</a></p>
+<h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add &lt;远程名字&gt; &lt;项目地址&gt;</span><br><span class="line">git push &lt;远程名字&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Windows、MacOS、Linux-多系统操作问题"><a href="#Windows、MacOS、Linux-多系统操作问题" class="headerlink" title="Windows、MacOS、Linux 多系统操作问题"></a>Windows、MacOS、Linux 多系统操作问题</h2><h3 id="文件权限问题"><a href="#文件权限问题" class="headerlink" title="文件权限问题"></a>文件权限问题</h3><p>我的应用场景是 Mac、Windows 共享树莓派 Linux 系统的文件夹，共享后 Mac 默认的文件权限是 755，Window 是 644，用 VScode 的 Git 对比功能会显示全部文件都是修改状态，而且某些可执行 sh 文件权限被修改后无法执行。</p>
+<p>解决方案为统一用树莓派 linux 系统控制 Git 上传，Mac 和 Windows 只是为了利用 VScode 的 Git 比对功能，由于 clone 下来貌似项目文件夹下的.git&#x2F;config 文件默认设置了 core.filemode&#x3D;ture 因此需要如下步骤：</p>
+<ul>
+<li><p>进入项目目录，取消默认配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> project</span><br><span class="line">git config --<span class="built_in">unset</span> core.filemode <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置树莓派 Linux 系统 Git 全局开启</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.filemode <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置 Windows 和 Mac 全局关闭（因为貌似不配置默认开启）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.filemode <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查配置是否正确</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> project</span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="window、unix-文件结束符问题"><a href="#window、unix-文件结束符问题" class="headerlink" title="window、unix 文件结束符问题"></a>window、unix 文件结束符问题</h3><p><a href="https://docs.github.com/en/github/using-git/configuring-git-to-handle-line-endings">https://docs.github.com/en/github/using-git/configuring-git-to-handle-line-endings</a></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global alias.st <span class="string">&quot;status&quot;</span></span><br><span class="line">git config --global alias.ci <span class="string">&quot;commit&quot;</span></span><br><span class="line">git config --global alias.co <span class="string">&quot;checkout&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="git-手册"><a href="#git-手册" class="headerlink" title="git 手册"></a>git 手册</h3><p><a href="https://git-scm.com/book/zh/v2">https://git-scm.com/book/zh/v2</a></p>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis 常用数据类型对应数据结构</title>
+    <url>/2020/08/27/Redis-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AF%B9%E5%BA%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<p>Redis 中，键的数据类型是字符串，但是为了丰富数据存储的方式，方便开发者使用，值的数据类型有很多，常用的数据类型有这样几种，它们分别是字符串、列表、字典、集合、有序集合。</p>
+<span id="more"></span>
+
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>“字符串（string）”这种数据类型非常简单，对应到数据结构里，就是字符串。</p>
+<h2 id="列表（list）"><a href="#列表（list）" class="headerlink" title="列表（list）"></a>列表（list）</h2><p>列表这种数据类型支持存储一组数据。这种数据类型对应两种实现方法，一种是压缩列表（ziplist），另一种是双向循环链表。</p>
+<h3 id="压缩列表"><a href="#压缩列表" class="headerlink" title="压缩列表"></a>压缩列表</h3><p>当列表中存储的数据量比较小的时候，列表就可以采用压缩列表的方式实现。具体需要同时满足下面两个条件：</p>
+<ul>
+<li>列表中保存的单个数据（有可能是字符串类型的）小于 64 字节；</li>
+<li>列表中数据个数少于 512 个。</li>
+</ul>
+<p>它有点儿类似数组，通过一片连续的内存空间，来存储数据。不过，它跟数组不同的一点是，它允许存储的数据大小不同。省内存，读取效率高。</p>
+<h3 id="双向循环链表"><a href="#双向循环链表" class="headerlink" title="双向循环链表"></a>双向循环链表</h3><p>当列表中存储的数据量比较大的时候，也就是不能同时满足刚刚讲的两个条件的时候，使用双向循环链表。</p>
+<p>Redis 的这种双向链表的实现方式，非常值得借鉴。它额外定义一个 list 结构体，来组织链表的首、尾指针，还有长度等信息。这样，在使用的时候就会非常方便。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 以下是C语言代码，因为Redis是用C语言实现的。</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">listnode</span> &#123;</span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">listNode</span> *prev;</span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">listNode</span> *next;</span><br><span class="line">  <span class="type">void</span> *value;</span><br><span class="line">&#125; listNode;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">list</span> &#123;</span><br><span class="line">  listNode *head;</span><br><span class="line">  listNode *tail;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">long</span> len;</span><br><span class="line">  <span class="comment">// ....省略其他定义</span></span><br><span class="line">&#125; list;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字典（hash）"><a href="#字典（hash）" class="headerlink" title="字典（hash）"></a>字典（hash）</h2><p>字典类型用来存储一组数据对。每个数据对又包含键值两部分。字典类型也有两种实现方式。一种是压缩列表，另一种是散列表。</p>
+<h3 id="压缩列表-同上"><a href="#压缩列表-同上" class="headerlink" title="压缩列表(同上)"></a>压缩列表(同上)</h3><p>只有当存储的数据量比较小的情况下，Redis 才使用压缩列表来实现字典类型。具体需要满足两个条件：</p>
+<ul>
+<li>字典中保存的键和值的大小都要小于 64 字节；</li>
+<li>字典中键值对的个数要小于 512 个。</li>
+</ul>
+<h3 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h3><p>当不能同时满足上面两个条件的时候，Redis 就使用散列表来实现字典类型。</p>
+<h2 id="集合（set）"><a href="#集合（set）" class="headerlink" title="集合（set）"></a>集合（set）</h2><p>集合这种数据类型用来存储一组不重复的数据。这种数据类型也有两种实现方法，一种是基于有序数组，另一种是基于散列表。</p>
+<h2 id="有序集合（sortedset）"><a href="#有序集合（sortedset）" class="headerlink" title="有序集合（sortedset）"></a>有序集合（sortedset）</h2><p>它用来存储一组数据，并且每个数据会附带一个得分。通过得分的大小，我们将数据组织成跳表这样的数据结构，以支持快速地按照得分值、得分区间获取数据。</p>
+<p>当数据量比较小的时候，Redis 会用压缩列表来实现有序集合。</p>
+<h2 id="数据结构持久化"><a href="#数据结构持久化" class="headerlink" title="数据结构持久化"></a>数据结构持久化</h2><p>刚刚我们讲到，Redis 的数据格式由“键”和“值”两部分组成。而“值”又支持很多数据类型，比如字符串、列表、字典、集合、有序集合。像字典、集合等类型，底层用到了散列表，散列表中有指针的概念，而指针指向的是内存中的存储地址。 那 Redis 是如何将这样一个跟具体内存地址有关的数据结构存储到磁盘中的呢？</p>
+<p>实际上，Redis 遇到的这个问题并不特殊，很多场景中都会遇到。我们把它叫作数据结构的持久化问题，或者对象的持久化问题。</p>
+<p>第一种是清除原有的存储结构，只将数据存储到磁盘中。当我们需要从磁盘还原数据到内存的时候，再重新将数据组织成原来的数据结构。实际上，Redis 采用的就是这种持久化思路。</p>
+<p>不过，这种方式也有一定的弊端。那就是数据从硬盘还原到内存的过程，会耗用比较多的时间。</p>
+<p>第二种方式是保留原来的存储格式，将数据按照原有的格式存储在磁盘中。</p>
+]]></content>
+      <categories>
+        <category>Geek</category>
+      </categories>
+      <tags>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis - 面试</title>
+    <url>/2020/08/27/Redis-%E9%9D%A2%E8%AF%95/</url>
+    <content><![CDATA[<p>总结下工作用到的 Redis 相关知识点，面试的时候有点说的。</p>
+<span id="more"></span>
+
+<h2 id="缓存类型"><a href="#缓存类型" class="headerlink" title="缓存类型"></a>缓存类型</h2><ul>
+<li><p>本地缓存</p>
+<p>本地缓存是内存访问，没有远程交互开销，性能最好，但是受限于单机容量，一般缓存较小且无法扩展。</p>
+</li>
+<li><p>分布式缓存</p>
+<p>分布式缓存一般都具有良好的水平扩展能力，对较大数据量的场景也能应付自如。缺点就是需要进行远程请求，性能不如本地缓存。</p>
+</li>
+<li><p>多级缓存</p>
+<p>为了平衡这种情况，实际业务中一般采用多级缓存，本地缓存只保存访问频率最高的部分热点数据，其他的热点数据放在分布式缓存中。</p>
+</li>
+</ul>
+<h2 id="淘汰策略"><a href="#淘汰策略" class="headerlink" title="淘汰策略"></a>淘汰策略</h2><p>先进先出策略 FIFO（First In，First Out）、最少使用策略 LFU（Least Frequently Used）、最近最少使用策略 LRU（Least Recently Used）。</p>
+<ul>
+<li>FIFO（First In，First Out）先进先出策略。</li>
+<li>LFU（Least Frequently Used）最少使用策略。</li>
+<li>LRU（Least Recently Used）最近最少使用策略。</li>
+</ul>
+<h2 id="Memcache-缺陷"><a href="#Memcache-缺陷" class="headerlink" title="Memcache (缺陷)"></a>Memcache (缺陷)</h2><ul>
+<li>key 不能超过 250 个字节。</li>
+<li>value 不能超过 1M 字节。</li>
+<li>key 的最大失效时间是 30 天。</li>
+<li>只支持 K-V 结构，不提供持久化和主从同步功能。</li>
+</ul>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><ul>
+<li>与 MC 不同的是，Redis 采用单线程模式处理请求。这样做的原因有 2 个：一个是因为采用了非阻塞的异步事件处理机制；另一个是缓存数据都是内存操作 IO 时间不会太长，单线程可以避免线程上下文切换产生的代价。</li>
+<li>Redis 支持持久化，所以 Redis 不仅仅可以用作缓存，也可以用作 NoSQL 数据库。</li>
+<li>相比 MC，Redis 还有一个非常大的优势，就是除了 K-V 之外，还支持多种数据格式，例如 list、set、sorted set、hash 等。</li>
+<li>Redis 提供主从同步机制，以及 Cluster 集群部署能力，能够提供高可用服务。</li>
+</ul>
+<h2 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><ul>
+<li><p>缓存功能</p>
+<p>String 字符串是最常用的数据类型，不仅仅是 Redis，各个语言都是最基本类型，因此，利用 Redis 作为缓存，配合其它数据库作为存储层，利用 Redis 支持高并发的特点，可以大大加快系统的读写速度、以及降低后端数据库的压力。</p>
+</li>
+<li><p>计数器</p>
+<p>游戏活动当前参与人数。</p>
+</li>
+</ul>
+<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><ul>
+<li><p>存储结构化数据</p>
+<p>这个是类似 Map 的一种结构，这个一般就是可以将结构化的数据，比如一个对象（前提是这个对象没嵌套其他的对象）给缓存在 Redis 里，然后每次读写缓存的时候，可以就操作 Hash 里的某个字段。</p>
+</li>
+</ul>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><ul>
+<li><p>消息队列</p>
+<p>游戏后台订单消息回调通过 SOAP 接口领奖时接口挂掉，需要保存订单队列。</p>
+</li>
+</ul>
+<h3 id="Set、Sorted-Set"><a href="#Set、Sorted-Set" class="headerlink" title="Set、Sorted Set"></a>Set、Sorted Set</h3><ul>
+<li><p>排行榜</p>
+<p>写进去的时候给一个分数，自动根据分数排序。</p>
+</li>
+</ul>
+<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><ul>
+<li><p>RDB</p>
+<p>把整个 Redis 的数据保存在单一文件中，比较适合用来做灾备，但缺点是快照保存完成之前如果宕机，这段时间的数据将会丢失，另外保存快照时可能导致服务短时间不可用。</p>
+</li>
+<li><p>AOF</p>
+<p>对日志文件的写入操作使用的追加模式，有灵活的同步策略，支持每秒同步、每次修改同步和不同步，缺点就是相同规模的数据集，AOF 要大于 RDB，AOF 在运行效率上往往会慢于 RDB。</p>
+</li>
+</ul>
+<h2 id="缓存常见问题"><a href="#缓存常见问题" class="headerlink" title="缓存常见问题"></a>缓存常见问题</h2><ul>
+<li><p>缓存更新方式</p>
+<p>缓存的数据在数据源发生变更时需要对缓存进行更新，数据源可能是 DB，也可能是远程服务。更新的方式可以是主动更新。数据源是 DB 时，可以在更新完 DB 后就直接更新缓存。</p>
+</li>
+<li><p>数据不一致</p>
+<p>缓存不一致产生的原因一般是主动更新失败，例如更新 DB 后，更新 Redis 因为网络原因请求超时；或者是异步更新失败导致。</p>
+<p>解决的办法是，如果服务对耗时不是特别敏感可以增加重试；如果服务对耗时敏感可以通过异步补偿任务来处理失败的更新，或者短期的数据不一致不会影响业务，那么只要下次更新时可以成功，能保证最终一致性就可以。</p>
+</li>
+<li><p>缓存穿透</p>
+<p>产生这个问题的原因可能是外部的恶意攻击，例如，对用户信息进行了缓存，但恶意攻击者使用不存在的用户 id 频繁请求接口，导致查询缓存不命中，然后穿透 DB 查询依然不命中。这时会有大量请求穿透缓存访问到 DB。</p>
+<p>解决办法：</p>
+<p>1.对不存在的用户，在缓存中保存一个空对象进行标记，防止相同 ID 再次访问 DB。不过有时这个方法并不能很好解决问题，可能导致缓存中存储大量无用数据。</p>
+<p>2.使用 BloomFilter 过滤器，BloomFilter 的特点是存在性检测，如果 BloomFilter 中不存在，那么数据一定不存在；如果 BloomFilter 中存在，实际数据也有可能会不存在。非常适合解决这类的问题。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/08/01/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+</search>
