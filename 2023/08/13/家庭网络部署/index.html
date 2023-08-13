@@ -27,7 +27,7 @@
 <meta property="og:description" content="拓扑图flowchart TB     A[fab:fa-internet-explorer 外网]      subgraph B [入户柜]         B1(光猫)         subgraph B2 [软路由-N100]             subgraph B21 [2.5G网口]                 B214[fa:fa-ethernet lan]">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-13T08:32:39.000Z">
-<meta property="article:modified_time" content="2023-08-13T08:32:39.715Z">
+<meta property="article:modified_time" content="2023-08-13T14:50:17.885Z">
 <meta property="article:author" content="Soul Dark">
 <meta name="twitter:card" content="summary">
 
@@ -192,8 +192,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2023-08-13 04:32:39" itemprop="dateCreated datePublished" datetime="2023-08-13T04:32:39-04:00">2023-08-13</time>
+      <time title="创建时间：2023-08-13 04:32:39 / 修改时间：10:50:17" itemprop="dateCreated datePublished" datetime="2023-08-13T04:32:39-04:00">2023-08-13</time>
     </span>
 
   
@@ -203,7 +204,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
+      <span>2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -261,35 +262,37 @@
     subgraph C [客厅]
         subgraph C1 [网口]
             C11[fa:fa-wifi AP]
-            subgraph C12 [千兆交换机]
-                C121[fa:fa-ethernet wan]
-                C122[fa:fa-ethernet lan]
-                C123[fa:fa-ethernet lan]
-                C124[fa:fa-ethernet lan]
-                C125[fa:fa-ethernet lan]
-            end
+            C12[fa:fa-ethernet]
         end
-        subgraph C2 [设备]
-            C21([fa:fa-server 万由UNAS])
-            C22([fa:fa-film 蓝光播放器-芝杜Z9X])
-            C23([fa:fa-film Apple TV])
-            C24([fa:fa-tv 索尼75X95J])
-            C25([fa:fa-volume-up 三星Q990B])
-            C26([fa:fa-gamepad PS5])
-            C27([fa:fa-gamepad Switch])
+        subgraph C2 [千兆交换机]
+            C21[fa:fa-ethernet wan]
+            C22[fa:fa-ethernet lan]
+            C23[fa:fa-ethernet lan]
+            C24[fa:fa-ethernet lan]
+            C25[fa:fa-ethernet lan]
         end
-        C122 --- C21
-        C123 --- C22
-        C124 --- C23
-        C23 o--o C25
-        C22 o--o C25
-        C26 o--o C24
-        C27 o--o C24
-        C25 o--o|eARC| C24
-        C11 -.- C25
-        C11 -.- C24
-        C11 -.- C26
-        C11 -.- C27
+        subgraph C3 [设备]
+            C31([fa:fa-server 万由UNAS])
+            C32([fa:fa-film 蓝光播放器-芝杜Z9X])
+            C33([fa:fa-film Apple TV])
+            C34([fa:fa-tv 索尼75X95J])
+            C35([fa:fa-volume-up 三星Q990B])
+            C36([fa:fa-gamepad PS5])
+            C37([fa:fa-gamepad Switch])
+        end
+        C12 --- C21
+        C22 --- C31
+        C23 --- C32
+        C24 --- C33
+        C33 o--o C35
+        C32 o--o C35
+        C36 o--o C34
+        C37 o--o C34
+        C35 o--o|eARC| C34
+        C11 -.- C35
+        C11 -.- C34
+        C11 -.- C36
+        C11 -.- C37
     end
 
     subgraph D [书房]
@@ -361,7 +364,7 @@
     end
 
     B38 --- B214
-    B37 ---- C121
+    B37 ---- C12
     B36 ---- C11
     B35 ---- D12
     B34 ---- D11
