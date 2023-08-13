@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -151,6 +151,243 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/13/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E9%83%A8%E7%BD%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Soul Dark">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="D.S BLOG">
+      <meta itemprop="description" content="A Geeker">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | D.S BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/13/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E9%83%A8%E7%BD%B2/" class="post-title-link" itemprop="url">家庭网络部署</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-08-13 04:32:39" itemprop="dateCreated datePublished" datetime="2023-08-13T04:32:39-04:00">2023-08-13</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="拓扑图"><a href="#拓扑图" class="headerlink" title="拓扑图"></a>拓扑图</h2><pre><code class="highlight mermaid">flowchart TB
+    A[fab:fa-internet-explorer 外网]
+
+    subgraph B [入户柜]
+        B1(光猫)
+        subgraph B2 [软路由-N100]
+            subgraph B21 [2.5G网口]
+                B214[fa:fa-ethernet lan]
+                B213[fa:fa-ethernet lan]
+                B212[fa:fa-ethernet wan]
+                B211[fa:fa-ethernet wan]
+            end
+            subgraph B22 [虚拟机-PVE]
+                direction LR
+                B221[[fa:fa-terminal 爱快-主路由]]
+                B222[[fa:fa-terminal openwrt-旁路由]]
+                %% B223[[fa:fa-terminal Debian-Docker]]
+                B221 ~~~ B222
+            end
+        end
+        subgraph B3 [&quot;PoE·AC千兆一体机&quot;]
+            B31[fa:fa-ethernet lan]
+            B32[fa:fa-ethernet lan]
+            B33[fa:fa-ethernet lan]
+            B34[fa:fa-ethernet lan]
+            B35[fa:fa-ethernet lan]
+            B36[fa:fa-ethernet lan]
+            B37[fa:fa-ethernet lan]
+            B38[fa:fa-ethernet lan]
+            B39[fa:fa-ethernet wan]
+        end
+
+        B1 ---|宽带| B211
+        B1 ---|IPTV| B212
+    end
+
+    A --- B1
+
+    subgraph C [客厅]
+        subgraph C1 [网口]
+            C11[fa:fa-wifi AP]
+            subgraph C12 [千兆交换机]
+                C121[fa:fa-ethernet wan]
+                C122[fa:fa-ethernet lan]
+                C123[fa:fa-ethernet lan]
+                C124[fa:fa-ethernet lan]
+                C125[fa:fa-ethernet lan]
+            end
+        end
+        subgraph C2 [设备]
+            C21([fa:fa-server 万由UNAS])
+            C22([fa:fa-film 蓝光播放器-芝杜Z9X])
+            C23([fa:fa-film Apple TV])
+            C24([fa:fa-tv 索尼75X95J])
+            C25([fa:fa-volume-up 三星Q990B])
+            C26([fa:fa-gamepad PS5])
+            C27([fa:fa-gamepad Switch])
+        end
+        C122 --- C21
+        C123 --- C22
+        C124 --- C23
+        C23 o--o C25
+        C22 o--o C25
+        C26 o--o C24
+        C27 o--o C24
+        C25 o--o|eARC| C24
+        C11 -.- C25
+        C11 -.- C24
+        C11 -.- C26
+        C11 -.- C27
+    end
+
+    subgraph D [书房]
+        subgraph D1 [网口]
+            D11[fa:fa-wifi AP]
+            D12[fa:fa-ethernet]
+        end
+        subgraph D2 [设备]
+            D21([fa:fa-desktop 台式电脑])
+        end
+        D12 --- D21
+    end
+
+    subgraph E [主卧]
+        direction TB
+        subgraph E1 [网口]
+            E11[fa:fa-wifi AP]
+            E12[fa:fa-ethernet]
+        end
+        subgraph E2 [设备]
+            E21([fa:fa-tv 索尼55x9500G])
+        end
+        E1 ~~~ E2
+        E11 -.- E21
+    end
+
+    subgraph F [次卧]
+        direction TB
+        subgraph F1 [网口]
+            F11[fa:fa-wifi AP]
+            F12[fa:fa-ethernet]
+        end
+        subgraph F2 [设备]
+            F21([fa:fa-video 极米H2])
+        end
+        F1 ~~~ F2
+        F11 -.- F21
+    end
+
+    subgraph G [客卧]
+        direction TB
+        subgraph G1 [网口]
+            G11[fa:fa-wifi AP]
+            G12[fa:fa-ethernet]
+        end
+        subgraph G2 [设备]
+            G21([fa:fa-tv 华为SE55])
+        end
+        G1 ~~~ G2
+        G11 -.- G21
+    end
+
+    subgraph H [移动设备]
+        direction LR
+        H1([手机])
+        H2([平板])
+        H3([笔记本电脑])
+        H4([智能家居])
+        H1 ~~~ H2 ~~~ H3 ~~~ H4
+    end
+
+    subgraph I [图例]
+        direction LR
+        I1[A] ---|有线| I2[B]
+        I3[A] -.-|无线| I4[B]
+        I5[A] o--o|HDMI| I6[B]
+        I2 ~~~ I3
+        I4 ~~~ I5
+    end
+
+    B38 --- B214
+    B37 ---- C121
+    B36 ---- C11
+    B35 ---- D12
+    B34 ---- D11
+    B33 ---- E11
+    B32 ---- F11
+    B31 ---- G11
+    C11 -..- H
+    D11 -..- H
+    E11 -..- H
+    F11 -..- H
+    G11 -..- H
+    H ~~~ I</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -711,13 +948,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">6k</span>
+    <span title="站点总字数">8k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6 分钟</span>
+    <span title="站点阅读时长">7 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -745,6 +982,8 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
 
